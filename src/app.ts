@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+import cors from "cors";
 
 interface Book {
   id: number;
@@ -12,6 +13,8 @@ const books: Book[] = [];
 var newId: number = 0;
 
 const app = express();
+
+app.use(cors());
 
 // Middleware for parsing JSON data
 app.use(express.json());
@@ -74,7 +77,7 @@ app.delete("/books/:id", (req: Request, res: Response) => {
 });
 
 // Start the server
-const PORT: number = 3000;
+const PORT: number = 3001;
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
